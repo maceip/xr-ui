@@ -37,10 +37,10 @@ const KVRow: React.FC<{ label: string; value: string; accent?: boolean }> = ({
       lineHeight: 1.35,
     }}
   >
-    <span style={{ color: '#94A3B8', fontWeight: 500 }}>{label}</span>
+    <span style={{ color: 'rgba(255, 255, 255, 0.76)', fontWeight: 500 }}>{label}</span>
     <span
       style={{
-        color: accent ? '#FFFFFF' : '#E2E8F0',
+        color: '#FFFFFF',
         fontWeight: accent ? 700 : 500,
       }}
     >
@@ -67,7 +67,7 @@ export const AUTHORIZATION_CATALOG: CatalogModalItem[] = [
       </>
     ),
     actions: [
-      { id: 'approve', label: 'Create & Mint', role: 'primary' },
+      { id: 'approve', label: 'Create', role: 'primary' },
       { id: 'deny', label: 'Deny', role: 'secondary' },
     ],
   },
@@ -176,8 +176,8 @@ export const AUTHORIZATION_CATALOG: CatalogModalItem[] = [
       <BallisticAlternativeView variant={ballisticVariant} />
     ),
     actions: [
-      { id: 'freeze', label: 'Freeze & Revert', role: 'primary' },
-      { id: 'allow', label: 'Let Continue', role: 'destructive' },
+      { id: 'freeze', label: 'Freeze', role: 'primary' },
+      { id: 'allow', label: 'Ignore', role: 'destructive' },
     ],
   },
   {
@@ -198,7 +198,7 @@ export const AUTHORIZATION_CATALOG: CatalogModalItem[] = [
     ),
     actions: [
       { id: 'keep-wt', label: 'Keep wt-auth', role: 'primary' },
-      { id: 'halt-both', label: 'Pause Both', role: 'secondary' },
+      { id: 'halt-both', label: 'Pause', role: 'secondary' },
     ],
   },
   {
@@ -218,8 +218,8 @@ export const AUTHORIZATION_CATALOG: CatalogModalItem[] = [
       </>
     ),
     actions: [
-      { id: 'deny', label: 'Abort Deploy', role: 'destructive' },
-      { id: 'approve', label: 'Run Migration', role: 'secondary' },
+      { id: 'deny', label: 'Abort', role: 'destructive' },
+      { id: 'approve', label: 'Migrate', role: 'secondary' },
     ],
   },
   {

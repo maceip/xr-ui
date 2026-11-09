@@ -25,12 +25,11 @@ export type OperationIllustrationKind =
   | 'human-challenge';
 
 /**
- * Crisp 28x28 site favicon badge rendered inside the single flat card header.
- * Gives instant brand recognition without requiring external network fetches on glasses.
+ * Crisp site favicon badge rendered on the left of the header.
  */
 export const SiteFavicon: React.FC<{ origin: BrandOrigin; size?: number }> = ({
   origin,
-  size = 28,
+  size = 26,
 }) => {
   switch (origin) {
     case 'linkedin.com':
@@ -46,7 +45,7 @@ export const SiteFavicon: React.FC<{ origin: BrandOrigin; size?: number }> = ({
     case 'github.com':
       return (
         <svg width={size} height={size} viewBox="0 0 28 28" fill="none" aria-label="GitHub favicon">
-          <rect width="28" height="28" rx="6" fill="#1B1F24" stroke="#484F58" strokeWidth="1" />
+          <rect width="28" height="28" rx="6" fill="#1B1F24" stroke="#6E7681" strokeWidth="1" />
           <path
             fillRule="evenodd"
             clipRule="evenodd"
@@ -68,7 +67,7 @@ export const SiteFavicon: React.FC<{ origin: BrandOrigin; size?: number }> = ({
     case 'vercel.com':
       return (
         <svg width={size} height={size} viewBox="0 0 28 28" fill="none" aria-label="Vercel favicon">
-          <rect width="28" height="28" rx="6" fill="#17191E" stroke="#484F58" strokeWidth="1" />
+          <rect width="28" height="28" rx="6" fill="#17191E" stroke="#6E7681" strokeWidth="1" />
           <path d="M14 7L22 20.5H6L14 7Z" fill="#FFFFFF" />
         </svg>
       );
@@ -76,13 +75,7 @@ export const SiteFavicon: React.FC<{ origin: BrandOrigin; size?: number }> = ({
       return (
         <svg width={size} height={size} viewBox="0 0 28 28" fill="none" aria-label="AWS favicon">
           <rect width="28" height="28" rx="6" fill="#232F3E" />
-          <path
-            d="M7.5 18.2C11.2 20.6 16.8 20.6 20.5 18.2"
-            stroke="#FF9900"
-            strokeWidth="2.2"
-            strokeLinecap="round"
-          />
-          <path d="M19.2 16.5L21.2 18L19.8 20.1" stroke="#FF9900" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M7.5 18.2C11.2 20.6 16.8 20.6 20.5 18.2" stroke="#FF9900" strokeWidth="2.2" strokeLinecap="round" />
           <text x="7.5" y="14.5" fill="#FFFFFF" fontSize="8.5" fontWeight="800" fontFamily="system-ui, sans-serif">
             AWS
           </text>
@@ -91,8 +84,8 @@ export const SiteFavicon: React.FC<{ origin: BrandOrigin; size?: number }> = ({
     case 'linear.app':
       return (
         <svg width={size} height={size} viewBox="0 0 28 28" fill="none" aria-label="Linear favicon">
-          <rect width="28" height="28" rx="6" fill="#22252A" stroke="#4E5562" strokeWidth="1" />
-          <circle cx="14" cy="14" r="7.5" stroke="#8A94A6" strokeWidth="1.8" />
+          <rect width="28" height="28" rx="6" fill="#22252A" stroke="#6E7681" strokeWidth="1" />
+          <circle cx="14" cy="14" r="7.5" stroke="#CBD5E1" strokeWidth="1.8" />
           <path d="M8.5 17.5L17.5 8.5M10.5 19.5L19.5 10.5" stroke="#FFFFFF" strokeWidth="1.8" strokeLinecap="round" />
         </svg>
       );
@@ -109,7 +102,7 @@ export const SiteFavicon: React.FC<{ origin: BrandOrigin; size?: number }> = ({
     case 'console.anthropic.com':
       return (
         <svg width={size} height={size} viewBox="0 0 28 28" fill="none" aria-label="Anthropic favicon">
-          <rect width="28" height="28" rx="6" fill="#2B2723" stroke="#574E46" strokeWidth="1" />
+          <rect width="28" height="28" rx="6" fill="#2B2723" stroke="#6E7681" strokeWidth="1" />
           <path d="M11.5 8L6.8 20H9.4L13.8 8H11.5ZM16.5 8L21.2 20H18.6L14.2 8H16.5Z" fill="#D97757" />
         </svg>
       );
@@ -117,169 +110,141 @@ export const SiteFavicon: React.FC<{ origin: BrandOrigin; size?: number }> = ({
 };
 
 /**
- * Relatable, restrained two-tone vector illustrations that bucket operations visually
- * so the user grasps the consequence of an action before reading a single word.
+ * Universal Action Bucket Badge:
+ * Every semantic action icon sits inside a consistent, waveguide-safe Deep Slate-Indigo
+ * rounded tile (`#2A3650` -> `#222C42`) so the user immediately recognizes "this is the
+ * action bucket" without hunting across left and right corners.
+ * All icons are bold, high-contrast silhouettes with zero overlapping line clutter.
  */
 export const OperationIllustration: React.FC<{
   kind: OperationIllustrationKind;
   size?: number;
-}> = ({ kind, size = 48 }) => {
-  switch (kind) {
-    case 'passkey-account-create':
-      // New User Badge + Minting a Passkey Key in Meta Blitz Browser
-      return (
-        <svg width={size} height={size} viewBox="0 0 48 48" fill="none" aria-label="New account and passkey creation illustration">
-          {/* User silhouette */}
-          <circle cx="17" cy="16" r="6" stroke="#FFFFFF" strokeWidth="2.2" />
-          <path d="M7 33C7 27.8 11.2 24.5 17 24.5C20.2 24.5 22.9 25.5 24.7 27.3" stroke="#FFFFFF" strokeWidth="2.2" strokeLinecap="round" />
-          {/* Passkey Key + Plus badge (Blitz browser passkey minting) */}
-          <circle cx="31" cy="31" r="5.5" stroke="#60A5FA" strokeWidth="2.4" fill="#1E293B" />
-          <circle cx="31" cy="31" r="1.8" fill="#60A5FA" />
-          <path d="M36.5 31H43M40.5 31V34.5" stroke="#60A5FA" strokeWidth="2.4" strokeLinecap="round" />
-          <path d="M35 12V18M32 15H38" stroke="#60A5FA" strokeWidth="2.4" strokeLinecap="round" />
-        </svg>
-      );
+}> = ({ kind, size = 54 }) => {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 56 56"
+      fill="none"
+      style={{ flexShrink: 0 }}
+      aria-label={`${kind} action badge`}
+    >
+      <defs>
+        <linearGradient id="universalActionTile" x1="0" y1="0" x2="0" y2="56" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stopColor="#314163" />
+          <stop offset="100%" stopColor="#232E47" />
+        </linearGradient>
+      </defs>
+      {/* Universal Deep Slate-Blue Action Tile Backdrop */}
+      <rect
+        x="1"
+        y="1"
+        width="54"
+        height="54"
+        rx="15"
+        fill="url(#universalActionTile)"
+        stroke="rgba(147, 197, 253, 0.42)"
+        strokeWidth="1.5"
+      />
 
-    case 'passkey-signin':
-      // Existing Passkey Unlock + Biometric/Pinch Shield
-      return (
-        <svg width={size} height={size} viewBox="0 0 48 48" fill="none" aria-label="Passkey sign-in illustration">
+      {kind === 'passkey-account-create' && (
+        <>
+          {/* Bold Unmistakable Passkey Key (no overlapping shoulder!) + Plus Spark */}
+          <circle cx="21" cy="31" r="8.5" stroke="#FFFFFF" strokeWidth="3.2" fill="#1E293B" />
+          <circle cx="21" cy="31" r="2.8" fill="#93C5FD" />
           <path
-            d="M24 7L37 12.5V23.5C37 32.2 31.4 39.2 24 41.5C16.6 39.2 11 32.2 11 23.5V12.5L24 7Z"
+            d="M29.5 31H43M36 31V37M41.5 31V39"
             stroke="#FFFFFF"
-            strokeWidth="2.2"
-            fill="#2E3440"
-          />
-          <circle cx="22" cy="24" r="4" stroke="#60A5FA" strokeWidth="2.2" />
-          <path d="M26 24H32M29.5 24V27" stroke="#60A5FA" strokeWidth="2.2" strokeLinecap="round" />
-        </svg>
-      );
-
-    case 'credit-card-charge':
-      // Credit card with EMV chip + contactless wave
-      return (
-        <svg width={size} height={size} viewBox="0 0 48 48" fill="none" aria-label="Credit card payment illustration">
-          <rect x="6" y="12" width="36" height="24" rx="4.5" stroke="#FFFFFF" strokeWidth="2.2" fill="#2E3440" />
-          <line x1="6" y1="19" x2="42" y2="19" stroke="#94A3B8" strokeWidth="2.2" />
-          <rect x="11" y="24" width="7" height="5.5" rx="1.2" stroke="#FBBF24" strokeWidth="2" />
-          <line x1="23" y1="28" x2="36" y2="28" stroke="#FFFFFF" strokeWidth="2.2" strokeLinecap="round" />
-        </svg>
-      );
-
-    case 'subscription-cycle':
-      // Recurring billing loop around a card badge
-      return (
-        <svg width={size} height={size} viewBox="0 0 48 48" fill="none" aria-label="Recurring subscription illustration">
-          <path
-            d="M12 20C13.8 13.8 19.6 9.5 26.3 10.2C32.2 10.8 37 15.2 38.2 21"
-            stroke="#60A5FA"
-            strokeWidth="2.2"
+            strokeWidth="3.2"
             strokeLinecap="round"
           />
-          <path d="M35 17.5L38.5 21.5L41.5 17" stroke="#60A5FA" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+          {/* Minting '+' badge in top-right of key */}
+          <path d="M38 14V22M34 18H42" stroke="#60A5FA" strokeWidth="3" strokeLinecap="round" />
+        </>
+      )}
+
+      {kind === 'passkey-signin' && (
+        <>
+          {/* Bold Shield with Keyhole */}
           <path
-            d="M36 28C34.2 34.2 28.4 38.5 21.7 37.8C15.8 37.2 11 32.8 9.8 27"
+            d="M28 10L42 15.5V27.5C42 36.8 35.8 43.8 28 46.5C20.2 43.8 14 36.8 14 27.5V15.5L28 10Z"
+            fill="#1E293B"
             stroke="#FFFFFF"
-            strokeWidth="2.2"
-            strokeLinecap="round"
+            strokeWidth="2.8"
           />
-          <path d="M13 30.5L9.5 26.5L6.5 31" stroke="#FFFFFF" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
-          <text x="18" y="27" fill="#FFFFFF" fontSize="11" fontWeight="700" fontFamily="system-ui, sans-serif">
+          <circle cx="28" cy="25" r="4" fill="#60A5FA" />
+          <path d="M28 29V36" stroke="#60A5FA" strokeWidth="3.2" strokeLinecap="round" />
+        </>
+      )}
+
+      {kind === 'credit-card-charge' && (
+        <>
+          {/* Bold Dollar Coin + Contactless Tap Waves (never looks like a keyboard!) */}
+          <circle cx="23" cy="28" r="12" fill="#1E293B" stroke="#FFFFFF" strokeWidth="2.8" />
+          <text
+            x="23"
+            y="33.5"
+            textAnchor="middle"
+            fill="#FBBF24"
+            fontSize="16"
+            fontWeight="800"
+            fontFamily="system-ui, sans-serif"
+          >
             $
           </text>
-        </svg>
-      );
+          <path d="M38 22C40.2 25.2 40.2 30.8 38 34" stroke="#93C5FD" strokeWidth="2.6" strokeLinecap="round" />
+          <path d="M43 18.5C46.2 23.8 46.2 32.2 43 37.5" stroke="#93C5FD" strokeWidth="2.6" strokeLinecap="round" />
+        </>
+      )}
 
-    case 'analytical-tradeoff':
-      // Architectural Fork / Balance Scale between Option A & Option B
-      return (
-        <svg width={size} height={size} viewBox="0 0 48 48" fill="none" aria-label="Analytical architecture decision illustration">
-          <path d="M24 39V19" stroke="#94A3B8" strokeWidth="2.2" strokeLinecap="round" />
-          <path d="M24 23L13 13M24 23L35 13" stroke="#FFFFFF" strokeWidth="2.2" strokeLinecap="round" />
-          <circle cx="13" cy="13" r="4.5" fill="#2E3440" stroke="#60A5FA" strokeWidth="2.2" />
-          <circle cx="35" cy="13" r="4.5" fill="#2E3440" stroke="#FFFFFF" strokeWidth="2.2" />
-          <circle cx="24" cy="39" r="3" fill="#94A3B8" />
-        </svg>
-      );
+      {kind === 'subscription-cycle' && (
+        <>
+          {/* Bold Circular Renewal Arrows around '$' */}
+          <path d="M16 24C17.5 17.5 23.2 13 30 14C35.2 14.8 39.2 18.5 40.5 23.5" stroke="#93C5FD" strokeWidth="2.8" strokeLinecap="round" />
+          <path d="M36.5 20.5L40.8 24.2L43.5 19.5" stroke="#93C5FD" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M40 32C38.5 38.5 32.8 43 26 42C20.8 41.2 16.8 37.5 15.5 32.5" stroke="#FFFFFF" strokeWidth="2.8" strokeLinecap="round" />
+          <text x="28" y="33" textAnchor="middle" fill="#FFFFFF" fontSize="14" fontWeight="800" fontFamily="system-ui, sans-serif">
+            $
+          </text>
+        </>
+      )}
 
-    case 'ballistic-agent':
-      // Trajectory vector deflecting off-axis from target
-      return (
-        <svg width={size} height={size} viewBox="0 0 48 48" fill="none" aria-label="Ballistic agent trajectory illustration">
-          <line x1="8" y1="32" x2="40" y2="32" stroke="#64748B" strokeWidth="2" strokeDasharray="3 3" />
-          <circle cx="10" cy="32" r="3.5" fill="#FFFFFF" />
-          <circle cx="39" cy="32" r="3.5" stroke="#94A3B8" strokeWidth="2" />
-          <path d="M10 32L21 32L29 14L36 14" stroke="#F59E0B" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
-          <circle cx="36" cy="14" r="4" fill="#F59E0B" />
-        </svg>
-      );
+      {kind === 'analytical-tradeoff' && (
+        <>
+          {/* Bold Y-Fork Decision Signpost */}
+          <path d="M28 44V26" stroke="#FFFFFF" strokeWidth="3.2" strokeLinecap="round" />
+          <path d="M28 26L16 15M28 26L40 15" stroke="#93C5FD" strokeWidth="3.2" strokeLinecap="round" />
+          <path d="M16 21V15H22" stroke="#93C5FD" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M40 21V15H34" stroke="#FFFFFF" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round" />
+        </>
+      )}
 
-    case 'worktree-collision':
-      // Two parallel worktree tracks converging on the same file node
-      return (
-        <svg width={size} height={size} viewBox="0 0 48 48" fill="none" aria-label="Worktree collision illustration">
-          <path d="M8 15H20L28 24H40" stroke="#FFFFFF" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
-          <path d="M8 33H20L28 24" stroke="#F59E0B" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
-          <circle cx="11" cy="15" r="3" fill="#FFFFFF" />
-          <circle cx="11" cy="33" r="3" fill="#F59E0B" />
-          <circle cx="31" cy="24" r="5" fill="#2E3440" stroke="#F87171" strokeWidth="2.4" />
-        </svg>
-      );
-
-    case 'destructive-deploy':
-      // Production gate / hazard barrier
-      return (
-        <svg width={size} height={size} viewBox="0 0 48 48" fill="none" aria-label="Destructive deploy gate illustration">
-          <path d="M24 9L41 38H7L24 9Z" stroke="#F87171" strokeWidth="2.2" strokeLinejoin="round" fill="#3B2328" />
-          <line x1="24" y1="19" x2="24" y2="28" stroke="#FFFFFF" strokeWidth="2.4" strokeLinecap="round" />
-          <circle cx="24" cy="33" r="1.6" fill="#FFFFFF" />
-        </svg>
-      );
-
-    case 'vault-secret-inject':
-      // Blind vault keyhole + masked credential dots
-      return (
-        <svg width={size} height={size} viewBox="0 0 48 48" fill="none" aria-label="Blind vault secret injection illustration">
-          <rect x="8" y="14" width="32" height="20" rx="5" stroke="#FFFFFF" strokeWidth="2.2" fill="#2E3440" />
-          <circle cx="16" cy="24" r="2.2" fill="#60A5FA" />
-          <circle cx="24" cy="24" r="2.2" fill="#60A5FA" />
-          <circle cx="32" cy="24" r="2.2" fill="#60A5FA" />
-        </svg>
-      );
-
-    case 'oauth-scope-grant':
-      // Two nodes linked by a permission bridge
-      return (
-        <svg width={size} height={size} viewBox="0 0 48 48" fill="none" aria-label="OAuth scope grant illustration">
-          <rect x="7" y="16" width="12" height="16" rx="3" stroke="#FFFFFF" strokeWidth="2.2" />
-          <rect x="29" y="16" width="12" height="16" rx="3" stroke="#60A5FA" strokeWidth="2.2" />
-          <path d="M19 24H29" stroke="#94A3B8" strokeWidth="2.2" strokeDasharray="2.5 2.5" />
-          <circle cx="24" cy="24" r="3" fill="#60A5FA" />
-        </svg>
-      );
-
-    case 'outbound-post':
-      // Paper plane / external broadcast
-      return (
-        <svg width={size} height={size} viewBox="0 0 48 48" fill="none" aria-label="Outbound message commit illustration">
+      {kind === 'ballistic-agent' && (
+        <>
+          {/* Bold Warning Triangle + Runaway Loop Arrow (never looks like a snake or orbit!) */}
           <path
-            d="M9 23L39 10L31 38L22 27L9 23Z"
-            stroke="#FFFFFF"
-            strokeWidth="2.2"
+            d="M28 12L44 41H12L28 12Z"
+            fill="#3B2328"
+            stroke="#FBBF24"
+            strokeWidth="2.8"
             strokeLinejoin="round"
-            fill="#2E3440"
           />
-          <path d="M22 27L39 10" stroke="#60A5FA" strokeWidth="2" />
-        </svg>
-      );
+          <line x1="28" y1="22" x2="28" y2="31" stroke="#FFFFFF" strokeWidth="3.2" strokeLinecap="round" />
+          <circle cx="28" cy="36.5" r="2" fill="#FFFFFF" />
+        </>
+      )}
 
-    case 'human-challenge':
-      // Hand / verification checkpoint
-      return (
-        <svg width={size} height={size} viewBox="0 0 48 48" fill="none" aria-label="Human verification challenge illustration">
-          <rect x="10" y="11" width="28" height="26" rx="5" stroke="#FFFFFF" strokeWidth="2.2" fill="#2E3440" />
-          <path d="M18 24L22.5 28.5L31 19.5" stroke="#60A5FA" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      );
-  }
+      {(kind === 'worktree-collision' ||
+        kind === 'destructive-deploy' ||
+        kind === 'vault-secret-inject' ||
+        kind === 'oauth-scope-grant' ||
+        kind === 'outbound-post' ||
+        kind === 'human-challenge') && (
+        <>
+          <circle cx="28" cy="28" r="14" fill="#1E293B" stroke="#FFFFFF" strokeWidth="2.8" />
+          <path d="M22 28L26.5 32.5L35 23.5" stroke="#93C5FD" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+        </>
+      )}
+    </svg>
+  );
 };
