@@ -11,6 +11,10 @@ import {
   ORGANIC_SILHOUETTE_SPECS,
   OrganicWindowOutlineCard,
 } from './components/OrganicWindowOutlines';
+import {
+  EXPANDED_VALIDATION_SPECS,
+  ExpandedValidationCard,
+} from './components/ExpandedValidationPanels';
 
 export const App: React.FC = () => {
   const params = useMemo(() => new URLSearchParams(window.location.search), []);
@@ -284,6 +288,36 @@ export const App: React.FC = () => {
         >
           {ORGANIC_SILHOUETTE_SPECS.map((spec) => (
             <OrganicWindowOutlineCard
+              key={spec.id}
+              spec={spec}
+              onAction={(verb) => setLastSettlement(`${spec.id}:${verb}`)}
+            />
+          ))}
+        </div>
+      </section>
+
+      {/* Expanded Human Validation Panels (#1 Pick vs #2 Considered Runner-Up + Chat Validation) */}
+      <section
+        style={{
+          borderTop: '1px solid #222630',
+          paddingTop: 24,
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 16,
+        }}
+      >
+        <div style={{ fontSize: 13, fontWeight: 700, color: '#93C5FD' }}>
+          EXPANDED HUMAN VALIDATION PANELS (#1 PICK VS. #2 RUNNER-UP + VOICE/CHAT RATIONALE)
+        </div>
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(3, minmax(0, 1fr))',
+            gap: 18,
+          }}
+        >
+          {EXPANDED_VALIDATION_SPECS.map((spec) => (
+            <ExpandedValidationCard
               key={spec.id}
               spec={spec}
               onAction={(verb) => setLastSettlement(`${spec.id}:${verb}`)}
