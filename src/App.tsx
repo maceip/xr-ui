@@ -7,6 +7,10 @@ import {
   BALLISTIC_ALTERNATIVES_META,
   BallisticAlternativeId,
 } from './components/BallisticAlternatives';
+import {
+  ORGANIC_SILHOUETTE_SPECS,
+  OrganicWindowOutlineCard,
+} from './components/OrganicWindowOutlines';
 
 export const App: React.FC = () => {
   const params = useMemo(() => new URLSearchParams(window.location.search), []);
@@ -256,6 +260,37 @@ export const App: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {/* Organic Task-Shaped Window Silhouettes Showcase */}
+      <section
+        style={{
+          borderTop: '1px solid #222630',
+          paddingTop: 24,
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 16,
+        }}
+      >
+        <div style={{ fontSize: 13, fontWeight: 700, color: '#5EEAD4' }}>
+          ORGANIC &amp; METAPHORICAL TASK WINDOW SILHOUETTES (HUMAN HEAD · WHISPER LEAF · CUMULUS CLOUD · HEART · BLACK HOLE · PRICE TAG)
+        </div>
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(3, minmax(0, 1fr))',
+            gap: 18,
+            justifyItems: 'center',
+          }}
+        >
+          {ORGANIC_SILHOUETTE_SPECS.map((spec) => (
+            <OrganicWindowOutlineCard
+              key={spec.id}
+              spec={spec}
+              onAction={(verb) => setLastSettlement(`${spec.id}:${verb}`)}
+            />
+          ))}
+        </div>
+      </section>
     </div>
   );
 };
